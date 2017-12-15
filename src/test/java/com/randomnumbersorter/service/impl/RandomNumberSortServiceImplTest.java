@@ -43,7 +43,7 @@ public class RandomNumberSortServiceImplTest {
 	private RandomNumberSortUtil util;
 
 	@Test
-	public void testGenerateRandomNumbers(){
+	public void generateRandomNumbers(){
 		String randomNumbers = "5,3,99,22,4";
 		int[] randomNumberArray = {5,3,99,22,4};
 		
@@ -55,7 +55,7 @@ public class RandomNumberSortServiceImplTest {
 	}
 	
 	@Test
-	public void testSortAndPersistRandomNumbers(){
+	public void sortAndPersistRandomNumbers(){
 		String randomNumbersString = "5,3,99,22,4";
 		int[] randomNumberArray = {5,3,99,22,4};
 		int[] sortedArray = {3,4,5,22,99};
@@ -74,7 +74,7 @@ public class RandomNumberSortServiceImplTest {
 	}
 	
 	@Test
-	public void testFindAllOrderByDesc(){
+	public void findAllOrderByDesc(){
 		String randomNumbersString = "5,3,99,22,4";
 		String sortedNumbersString = "3,4,5,22,99";
 		

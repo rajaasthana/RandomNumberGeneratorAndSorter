@@ -27,7 +27,7 @@ public class RandomNumberSortIntegrationTest {
     private MockMvc mockMvc;
  
     @Test
-	public void testGenerateRandomNumbers(){
+	public void generateRandomNumbers(){
 		try {
 			mockMvc.perform(post("/generate").param("limit", "5"))
 				.andExpect(status().isOk())

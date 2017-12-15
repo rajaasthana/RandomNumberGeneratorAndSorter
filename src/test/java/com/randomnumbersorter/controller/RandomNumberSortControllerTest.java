@@ -30,7 +30,7 @@ public class RandomNumberSortControllerTest {
 	
 	
 	@Test
-	public void testDisplayHomePage(){
+	public void displayHomePage(){
 		when(service.findAllOrderByDesc()).thenReturn(new ArrayList<>());
 		try {
 			mockMvc.perform(get("/home"))
@@ -43,7 +43,7 @@ public class RandomNumberSortControllerTest {
 	}
 	
 	@Test
-	public void testGenerateRandomNumbers(){
+	public void generateRandomNumbers(){
 		String randomNumber = "5,3,99,22,4";
 		when(service.generateRandomNumbers(5)).thenReturn(randomNumber);
 		try {
@@ -57,7 +57,7 @@ public class RandomNumberSortControllerTest {
 	}
 	
 	@Test
-	public void testSortRandomNumbers(){
+	public void sortRandomNumbers(){
 		String randomNumber = "5,3,99,22,4";
 		String sortedNumbersString = "3,4,5,22,99";
 

@@ -27,13 +27,13 @@ public class RandomNumberSortUtilTest {
         }
     }
 	@Test
-	public void testGenerateRandomNumbers(){
+	public void generateRandomNumbers(){
 		int[] generatedRandomNumbers = randomNumberSortUtil.generateRandomNumber(5);
 		Assert.assertTrue(generatedRandomNumbers.length == 5);
 	}
 
 	@Test
-	public void testToString(){
+	public void convertPrimitiveArrayToString(){
 		int[] randomNumberArray = {5,3,99,22,4};
 		String expectedValue = "5,3,99,22,4";
 		String generatedRandomNumbers = randomNumberSortUtil.toString(randomNumberArray);
@@ -41,7 +41,7 @@ public class RandomNumberSortUtilTest {
 	}
 
 	@Test
-	public void testToIntArray(){
+	public void toIntArray(){
 		String randomNumber = "5,3,99,22,4";
 		int[] expectedValue = {5,3,99,22,4};
 		int[] generatedRandomNumbers = randomNumberSortUtil.toIntArray(randomNumber);
@@ -50,7 +50,7 @@ public class RandomNumberSortUtilTest {
 	}
 	
 	@Test
-	public void testSort(){
+	public void sort(){
 		int[] randomArray = {5,3,99,22,4};
 		int[] expectedArray = {3,4,5,22,99};
 		
@@ -60,7 +60,7 @@ public class RandomNumberSortUtilTest {
 	}
 	
 	@Test
-	public void testMapToModel(){
+	public void mapToModel(){
 		String randomNumbersString = "5,3,99,22,4";
 		String sortedNumbersString = "3,4,5,22,99";
 
