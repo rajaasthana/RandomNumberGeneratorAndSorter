@@ -30,9 +30,8 @@ To build and package the application to JAR
 
 ## Steps to execute the Application
  - Make sure Java 8 is installed on your PC
- - Get the source code from https://github.com/rajaasthana/RandomNumberGeneratorAndSorter
- - Use Maven command **mvn clean install** from the root of the project (use Maven 3.x)
- - Locate the generated JAR file and run the below command to start the application
-    **java -jar random-number-sorter-1.0.RELEASE.jar**
+ - Clone the source code from https://github.com/rajaasthana/RandomNumberGeneratorAndSorter
+ - Import as Maven Project in Eclipse or any supported IDE 
+ - Locate **Application.java** under com.randomnumbersorter package and run it as Java Application
  - Once the server is started, launch the application using http://localhost:8080/home/ in any browser
  - You can now generate and sort random numbers
