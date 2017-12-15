@@ -43,19 +43,35 @@ public class RandomNumberSortServiceImpl implements RandomNumberSortService {
 		int[] sortedNumbers = randomNumberSortUtil.sort(randomNumbers, dto);
 		Instant end = Instant.now();
 
-		String sortedRandomNumbers = randomNumberSortUtil.toString(sortedNumbers);
 		long timeTaken = Duration.between(start, end).toMillis();
-		dto.setUnsortedNumber(numbers);
-		dto.setSortedNumber(sortedRandomNumbers);
 		dto.setSortTime(timeTaken);
-
-		randomNumberSortRepository.save(dto);
-		return sortedRandomNumbers;
+		
+		return persist(dto, sortedNumbers, numbers);
 	}
 
 	@Override
-	public List<RandomNumberSortModel> findAllOrderByDesc() {
+	public List<RandomNumberSortModel> findAllSortedNumbersOrderByDesc() {
 		List<RandomNumberSortDto> randomNumberSortDtos = randomNumberSortRepository.findAllByOrderByIdDesc();
-		return randomNumberSortDtos.stream().map(randomNumberSortUtil::mapToModel).collect(Collectors.toList());
+		
+		return randomNumberSortDtos.stream()
+				.map(randomNumberSortUtil::mapToModel)
+				.collect(Collectors.toList());
+	}
+	
+	/**
+	 * Helper method to persist the data to DB
+	 * @param dto
+	 * @param sortedNumbers
+	 * @param unsortedNumbers
+	 * @return 
+	 */
+	private String persist(RandomNumberSortDto dto, int[] sortedNumbers, String unsortedNumbers){
+		String sortedRandomNumbers = randomNumberSortUtil.toString(sortedNumbers);
+		dto.setUnsortedNumbers(unsortedNumbers);
+		dto.setSortedNumbers(sortedRandomNumbers);
+
+		randomNumberSortRepository.save(dto);
+		
+		return sortedRandomNumbers;
 	}
 }

@@ -16,13 +16,13 @@ public class RandomNumberSortDto {
 	private int id;
 
 	@Column
-	private String unsortedNumber;
+	private String unsortedNumbers;
 
 	@Column
-	private String sortedNumber;
+	private String sortedNumbers;
 
 	@Column
-	private int noOfPositionChanged;
+	private int noOfPositionsChanged;
 
 	@Column
 	private long sortTime;
@@ -35,36 +35,59 @@ public class RandomNumberSortDto {
 		this.id = id;
 	}
 
-	public String getUnsortedNumber() {
-		return unsortedNumber;
+	/**
+	 * @return the unsortedNumbers
+	 */
+	public String getUnsortedNumbers() {
+		return unsortedNumbers;
 	}
 
-	public void setUnsortedNumber(String unsortedNumber) {
-		this.unsortedNumber = unsortedNumber;
+	/**
+	 * @param unsortedNumbers the unsortedNumbers to set
+	 */
+	public void setUnsortedNumbers(String unsortedNumbers) {
+		this.unsortedNumbers = unsortedNumbers;
 	}
 
-	public String getSortedNumber() {
-		return sortedNumber;
+	/**
+	 * @return the sortedNumbers
+	 */
+	public String getSortedNumbers() {
+		return sortedNumbers;
 	}
 
-	public void setSortedNumber(String sortedNumber) {
-		this.sortedNumber = sortedNumber;
+	/**
+	 * @param sortedNumbers the sortedNumbers to set
+	 */
+	public void setSortedNumbers(String sortedNumbers) {
+		this.sortedNumbers = sortedNumbers;
 	}
 
-	public int getNoOfPositionChanged() {
-		return noOfPositionChanged;
+	/**
+	 * @return the noOfPositionsChanged
+	 */
+	public int getNoOfPositionsChanged() {
+		return noOfPositionsChanged;
 	}
 
-	public void setNoOfPositionChanged(int noOfPositionChanged) {
-		this.noOfPositionChanged = noOfPositionChanged;
+	/**
+	 * @param noOfPositionsChanged the noOfPositionsChanged to set
+	 */
+	public void setNoOfPositionsChanged(int noOfPositionsChanged) {
+		this.noOfPositionsChanged = noOfPositionsChanged;
 	}
 
+	/**
+	 * @return the sortTime
+	 */
 	public long getSortTime() {
 		return sortTime;
 	}
 
+	/**
+	 * @param sortTime the sortTime to set
+	 */
 	public void setSortTime(long sortTime) {
 		this.sortTime = sortTime;
 	}
-
 }

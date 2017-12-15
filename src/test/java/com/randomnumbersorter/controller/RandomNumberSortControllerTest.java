@@ -28,10 +28,9 @@ public class RandomNumberSortControllerTest {
 	@MockBean
 	private RandomNumberSortService service;
 	
-	
 	@Test
-	public void displayHomePage(){
-		when(service.findAllOrderByDesc()).thenReturn(new ArrayList<>());
+	public void displayHomePageOk(){
+		when(service.findAllSortedNumbersOrderByDesc()).thenReturn(new ArrayList<>());
 		try {
 			mockMvc.perform(get("/home"))
 				.andExpect(status().isOk())
@@ -43,7 +42,18 @@ public class RandomNumberSortControllerTest {
 	}
 	
 	@Test
-	public void generateRandomNumbers(){
+	public void displayHomePageNotFound(){
+		when(service.findAllSortedNumbersOrderByDesc()).thenReturn(new ArrayList<>());
+		try {
+			mockMvc.perform(get("/invalidHome"))
+				.andExpect(status().is(404));
+		} catch (Exception e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void generateRandomNumbersOk(){
 		String randomNumber = "5,3,99,22,4";
 		when(service.generateRandomNumbers(5)).thenReturn(randomNumber);
 		try {
@@ -57,11 +67,25 @@ public class RandomNumberSortControllerTest {
 	}
 	
 	@Test
-	public void sortRandomNumbers(){
+	public void generateRandomNumbersException(){
+		String randomNumber = "5,3,99,22,4";
+		when(service.generateRandomNumbers(5)).thenReturn(randomNumber);
+		try {
+			mockMvc.perform(post("/generate").param("limit", "text"))
+				.andExpect(status().is(200))
+				.andExpect(view().name("error"))
+				.andExpect(forwardedUrl("/WEB-INF/jsp/error.jsp"));
+		} catch (Exception e) {
+			Assert.fail();
+		}
+	}
+	
+	@Test
+	public void sortRandomNumbersOk(){
 		String randomNumber = "5,3,99,22,4";
 		String sortedNumbersString = "3,4,5,22,99";
 
-		when(service.findAllOrderByDesc()).thenReturn(new ArrayList<>());
+		when(service.findAllSortedNumbersOrderByDesc()).thenReturn(new ArrayList<>());
 		when(service.sortAndPersistRandomNumbers(randomNumber)).thenReturn(sortedNumbersString);
 		try {
 			mockMvc.perform(post("/sort").param("numbers", randomNumber))

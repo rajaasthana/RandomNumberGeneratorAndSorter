@@ -33,6 +33,6 @@ public interface RandomNumberSortService {
 	 * 
 	 * @return all data (sorted/unsorted) from DB
 	 */
-	public List<RandomNumberSortModel> findAllOrderByDesc();
+	public List<RandomNumberSortModel> findAllSortedNumbersOrderByDesc();
 
 }

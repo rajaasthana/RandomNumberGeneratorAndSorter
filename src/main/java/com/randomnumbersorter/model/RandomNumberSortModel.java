@@ -11,17 +11,17 @@ public class RandomNumberSortModel {
 	/**
 	 * Holds comma separated unsorted number
 	 */
-	private String unsortedNumber;
+	private String unsortedNumbers;
 
 	/**
 	 * Holds comma separated sorted number
 	 */
-	private String sortedNumber;
+	private String sortedNumbers;
 
 	/**
 	 * Holds the position changed count to sort the random numbers
 	 */
-	private int noOfPositionChanged;
+	private int noOfPositionsChanged;
 
 	/**
 	 * Holds the time taken to sort the random numbers in milliseconds
@@ -29,48 +29,45 @@ public class RandomNumberSortModel {
 	private long sortTime;
 
 	/**
-	 * @return the unsortedNumber
+	 * @return the unsortedNumbers
 	 */
-	public String getUnsortedNumber() {
-		return unsortedNumber;
+	public String getUnsortedNumbers() {
+		return unsortedNumbers;
 	}
 
 	/**
-	 * @param unsortedNumber
-	 *            the unsortedNumber to set
+	 * @param unsortedNumbers the unsortedNumbers to set
 	 */
-	public void setUnsortedNumber(String unsortedNumber) {
-		this.unsortedNumber = unsortedNumber;
+	public void setUnsortedNumbers(String unsortedNumbers) {
+		this.unsortedNumbers = unsortedNumbers;
 	}
 
 	/**
-	 * @return the sortedNumber
+	 * @return the sortedNumbers
 	 */
-	public String getSortedNumber() {
-		return sortedNumber;
+	public String getSortedNumbers() {
+		return sortedNumbers;
 	}
 
 	/**
-	 * @param sortedNumber
-	 *            the sortedNumber to set
+	 * @param sortedNumbers the sortedNumbers to set
 	 */
-	public void setSortedNumber(String sortedNumber) {
-		this.sortedNumber = sortedNumber;
+	public void setSortedNumbers(String sortedNumbers) {
+		this.sortedNumbers = sortedNumbers;
 	}
 
 	/**
-	 * @return the noOfPositionChanged
+	 * @return the noOfPositionsChanged
 	 */
-	public int getNoOfPositionChanged() {
-		return noOfPositionChanged;
+	public int getNoOfPositionsChanged() {
+		return noOfPositionsChanged;
 	}
 
 	/**
-	 * @param noOfPositionChanged
-	 *            the noOfPositionChanged to set
+	 * @param noOfPositionsChanged the noOfPositionsChanged to set
 	 */
-	public void setNoOfPositionChanged(int noOfPositionChanged) {
-		this.noOfPositionChanged = noOfPositionChanged;
+	public void setNoOfPositionsChanged(int noOfPositionsChanged) {
+		this.noOfPositionsChanged = noOfPositionsChanged;
 	}
 
 	/**
@@ -81,10 +78,10 @@ public class RandomNumberSortModel {
 	}
 
 	/**
-	 * @param sortTime
-	 *            the sortTime to set
+	 * @param sortTime the sortTime to set
 	 */
 	public void setSortTime(long sortTime) {
 		this.sortTime = sortTime;
 	}
+
 }

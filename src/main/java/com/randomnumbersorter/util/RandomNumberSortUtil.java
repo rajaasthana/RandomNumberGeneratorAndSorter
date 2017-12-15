@@ -13,7 +13,7 @@ import com.randomnumbersorter.model.RandomNumberSortModel;
 @Component
 public class RandomNumberSortUtil {
 
-	private static int minIdx, minValue, counter;
+	private static int minIndex, minValue, counter;
 
 	/**
 	 * Utility method to generate random numbers using streams api
@@ -22,7 +22,9 @@ public class RandomNumberSortUtil {
 	 * @return generated random numbers
 	 */
 	public int[] generateRandomNumber(int limit) {
-		return new Random().ints(limit, 0, 100).toArray();
+		return new Random()
+				.ints(limit, 0, 100)
+				.toArray();
 	}
 
 	/**
@@ -32,7 +34,9 @@ public class RandomNumberSortUtil {
 	 * @return Comma separated string
 	 */
 	public String toString(int[] numbers) {
-		return Arrays.stream(numbers).mapToObj(String::valueOf).collect(Collectors.joining(","));
+		return Arrays.stream(numbers)
+				.mapToObj(String::valueOf)
+				.collect(Collectors.joining(","));
 	}
 
 	/**
@@ -42,7 +46,9 @@ public class RandomNumberSortUtil {
 	 * @return int array
 	 */
 	public int[] toIntArray(String numbers) {
-		return Arrays.stream(numbers.split(",")).mapToInt(Integer::parseInt).toArray();
+		return Arrays.stream(numbers.split(","))
+				.mapToInt(Integer::parseInt)
+				.toArray();
 	}
 
 	/**
@@ -55,22 +61,22 @@ public class RandomNumberSortUtil {
 	public int[] sort(int[] randomNumbers, RandomNumberSortDto dto) {
 		counter = 0;
 		IntStream.range(0, randomNumbers.length).forEach(index -> {
-			minIdx = index;
+			minIndex = index;
 			minValue = randomNumbers[index];
 
-			IntStream.range(minIdx + 1, randomNumbers.length).forEach(unsortedIndex -> {
+			IntStream.range(minIndex + 1, randomNumbers.length).forEach(unsortedIndex -> {
 				if (randomNumbers[unsortedIndex] <= minValue) {
 					minValue = randomNumbers[unsortedIndex];
-					minIdx = unsortedIndex;
+					minIndex = unsortedIndex;
 				}
 			});
 
-			if (minIdx != index) {
-				swap(randomNumbers, minIdx, index);
+			if (minIndex != index) {
+				swap(randomNumbers, minIndex, index);
 				counter++;
 			}
 		});
-		dto.setNoOfPositionChanged(counter);
+		dto.setNoOfPositionsChanged(counter);
 		return randomNumbers;
 	}
 
@@ -82,10 +88,11 @@ public class RandomNumberSortUtil {
 	 */
 	public RandomNumberSortModel mapToModel(RandomNumberSortDto dto) {
 		RandomNumberSortModel randomNumberSortModel = new RandomNumberSortModel();
-		randomNumberSortModel.setNoOfPositionChanged(dto.getNoOfPositionChanged());
-		randomNumberSortModel.setSortedNumber(dto.getSortedNumber());
-		randomNumberSortModel.setUnsortedNumber(dto.getUnsortedNumber());
+		randomNumberSortModel.setNoOfPositionsChanged(dto.getNoOfPositionsChanged());
+		randomNumberSortModel.setSortedNumbers(dto.getSortedNumbers());
+		randomNumberSortModel.setUnsortedNumbers(dto.getUnsortedNumbers());
 		randomNumberSortModel.setSortTime(dto.getSortTime());
+		
 		return randomNumberSortModel;
 	}
 

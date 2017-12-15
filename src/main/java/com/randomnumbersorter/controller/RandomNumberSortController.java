@@ -31,7 +31,8 @@ public class RandomNumberSortController {
 	@RequestMapping("/home")
 	public ModelAndView displayHomePage() {
 		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("numbers", randomNumberSortService.findAllOrderByDesc());
+		modelAndView.addObject("numbers", randomNumberSortService.findAllSortedNumbersOrderByDesc());
+		
 		return modelAndView;
 	}
 
@@ -43,8 +44,10 @@ public class RandomNumberSortController {
 	@RequestMapping("/generate")
 	public ModelAndView generateRandomNumber(@RequestParam("limit") int limit) {
 		ModelAndView modelAndView = new ModelAndView("home");
+
 		String randomNumbers = randomNumberSortService.generateRandomNumbers(limit);
 		modelAndView.addObject("randomNumbers", randomNumbers);
+
 		return modelAndView;
 	}
 
@@ -56,9 +59,11 @@ public class RandomNumberSortController {
 	@RequestMapping("/sort")
 	public ModelAndView sortRandomNumber(@RequestParam("numbers") String numbers) {
 		ModelAndView modelAndView = new ModelAndView("home");
+		
 		String sortedRandomNumbers = randomNumberSortService.sortAndPersistRandomNumbers(numbers);
 		modelAndView.addObject("sortedRandomNumbers", sortedRandomNumbers);
-		modelAndView.addObject("numbers", randomNumberSortService.findAllOrderByDesc());
+		modelAndView.addObject("numbers", randomNumberSortService.findAllSortedNumbersOrderByDesc());
+		
 		return modelAndView;
 	}
 

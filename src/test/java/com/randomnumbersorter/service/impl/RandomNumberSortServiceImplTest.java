@@ -46,11 +46,11 @@ public class RandomNumberSortServiceImplTest {
 	public void generateRandomNumbers(){
 		String randomNumbers = "5,3,99,22,4";
 		int[] randomNumberArray = {5,3,99,22,4};
-		
 		when(util.generateRandomNumber(5)).thenReturn(randomNumberArray);
 		when(util.toString(randomNumberArray)).thenReturn(randomNumbers);
 		
 		String generatedRandomNumbers = service.generateRandomNumbers(5);
+		
 		Assert.assertEquals(randomNumbers, generatedRandomNumbers);
 	}
 	
@@ -60,7 +60,6 @@ public class RandomNumberSortServiceImplTest {
 		int[] randomNumberArray = {5,3,99,22,4};
 		int[] sortedArray = {3,4,5,22,99};
 		String sortedNumbersString = "3,4,5,22,99";
-		
 		RandomNumberSortDto dto = new RandomNumberSortDto();
 		
 		when(util.toIntArray(randomNumbersString)).thenReturn(randomNumberArray);
@@ -77,9 +76,7 @@ public class RandomNumberSortServiceImplTest {
 	public void findAllOrderByDesc(){
 		String randomNumbersString = "5,3,99,22,4";
 		String sortedNumbersString = "3,4,5,22,99";
-		
 		List<RandomNumberSortDto> dtos = new ArrayList<>();
-		
 		RandomNumberSortDto dto1 = populateDto(1, randomNumbersString, sortedNumbersString, 5, 25);
 		RandomNumberSortDto dto2 = populateDto(2, randomNumbersString, sortedNumbersString, 4, 18);
 		dtos.add(dto1);
@@ -93,29 +90,31 @@ public class RandomNumberSortServiceImplTest {
 		when(util.mapToModel(dto1)).thenReturn(modelForDTO1);
 		when(util.mapToModel(dto2)).thenReturn(modelForDTO2);
 		
-		List<RandomNumberSortModel> dataModels = service.findAllOrderByDesc();
+		List<RandomNumberSortModel> dataModels = service.findAllSortedNumbersOrderByDesc();
 
 		Assert.assertNotNull(dataModels);
 		Assert.assertTrue(2 == dataModels.size());
-		Assert.assertTrue(dataModels.get(0).getNoOfPositionChanged() == 5);
+		Assert.assertTrue(dataModels.get(0).getNoOfPositionsChanged() == 5);
 	}
 	
 	private RandomNumberSortDto populateDto(int id, String unsortedNumber, String sortedNumber, int positionChanged, long timeTaken){
 		RandomNumberSortDto dto = new RandomNumberSortDto();
 		dto.setId(id);
-		dto.setNoOfPositionChanged(positionChanged);
-		dto.setSortedNumber(sortedNumber);
-		dto.setUnsortedNumber(unsortedNumber);
+		dto.setNoOfPositionsChanged(positionChanged);
+		dto.setSortedNumbers(sortedNumber);
+		dto.setUnsortedNumbers(unsortedNumber);
 		dto.setSortTime(timeTaken);
+		
 		return dto;
 	}
 	
 	private RandomNumberSortModel populateModel(int id, String unsortedNumber, String sortedNumber, int positionChanged, long timeTaken){
 		RandomNumberSortModel model = new RandomNumberSortModel();
-		model.setNoOfPositionChanged(positionChanged);
-		model.setSortedNumber(sortedNumber);
-		model.setUnsortedNumber(unsortedNumber);
+		model.setNoOfPositionsChanged(positionChanged);
+		model.setSortedNumbers(sortedNumber);
+		model.setUnsortedNumbers(unsortedNumber);
 		model.setSortTime(timeTaken);
+		
 		return model;
 	}
 }
