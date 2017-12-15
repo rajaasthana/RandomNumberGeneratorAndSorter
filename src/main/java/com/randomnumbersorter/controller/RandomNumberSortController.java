@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +29,7 @@ public class RandomNumberSortController {
 	 * 
 	 * @return home page view
 	 */
-	@RequestMapping("/home")
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView displayHomePage() {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("numbers", randomNumberSortService.findAllSortedNumbersOrderByDesc());
@@ -41,7 +42,7 @@ public class RandomNumberSortController {
 	 * 
 	 * @return home page view
 	 */
-	@RequestMapping("/generate")
+	@RequestMapping(value = "/generate", method = RequestMethod.POST)
 	public ModelAndView generateRandomNumber(@RequestParam("limit") int limit) {
 		ModelAndView modelAndView = new ModelAndView("home");
 
@@ -56,7 +57,7 @@ public class RandomNumberSortController {
 	 * 
 	 * @return home page view
 	 */
-	@RequestMapping("/sort")
+	@RequestMapping(value = "/sort", method = RequestMethod.POST)
 	public ModelAndView sortRandomNumber(@RequestParam("numbers") String numbers) {
 		ModelAndView modelAndView = new ModelAndView("home");
 		
